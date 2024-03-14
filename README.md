@@ -20,7 +20,7 @@ A chatbot serves as a mediator, guiding users through the interview process. The
 To use this software:
 
 1. Clone the repository to your local machine.
-2. download the library 
+2. download the library (pip install speech_recognition, pyttsx3 ,openai, elevenlabs)
 3. Follow the instructions provided by the chatbot to conduct an interview.
 
 ## Contributing
