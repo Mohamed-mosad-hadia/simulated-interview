@@ -19,7 +19,7 @@ messages = []
 
 
 #sys_msg
-system_msg = "interviewer"                                  #chatbot will act as an interviewer in the conversation
+system_msg = "interviewer" #chatbot will act as an interviewer in the conversation
 messages.append({"role": "system", "content": system_msg})  # system --> chat-gpt act as interviewer
 print("Noted: This is a simulated interview for practice purposes only. It does not reflect your actual skills or qualifications.")
 
@@ -32,7 +32,7 @@ Ask the questions one by one and wait for my answers.
 Do not write explanations. 
 you will ask me the interview questions.
 '''
-messages.append({"role": "user", "content": message})             #added another user message to the conversation
+messages.append({"role": "user", "content": message}) #added another user message to the conversation
 
 
 
