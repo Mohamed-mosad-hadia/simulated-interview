@@ -24,7 +24,8 @@ your personality type is friendly and warm .
 you can ask technical questions and IQ questions.
 Only conduct the interview with me. 
 Ask the questions one by one and wait for my answers.
-Do not write explanations'''
+Do not write explanations.
+At the end of the conversation, give me a stay. '''
 
 #chatbot will act as an interviewer in the conversation
 messages.append({"role": "system", "content": system_msg})  # system --> chat-gpt act as interviewer
@@ -129,3 +130,15 @@ while question_count < max_questions:
         if message.lower() == "quit()":
            
          break
+
+
+
+
+# Interview button
+#if st.button("Start Interview"):
+   # conduct_interview()
+
+
+# Quit button
+#if st.button("Quit"):
+    #st.stop()
