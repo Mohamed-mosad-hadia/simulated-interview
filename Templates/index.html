@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulated Interview Chatbot</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #chat-container {
+      max-width: 600px;
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      overflow-y: scroll;
+      max-height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .user {
+      color: blue;
+    }
+
+    .assistant {
+      color: green;
+    }
+
+    #user-input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-right: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    #voice-btn,
+    #send-btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    #voice-btn:hover,
+    #send-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Simulated Interview</h1>
+
+  <div id="chat-container"></div>
+
+  <textarea id="user-input" placeholder="Type your answer..."></textarea>
+  <button id="voice-btn" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+  <button id="send-btn" onclick="sendMessage()">Send</button>
+
+  <script>
+    let recognition;
+
+    function startVoiceRecognition() {
+      recognition = new window.webkitSpeechRecognition(); // Use the SpeechRecognition API
+      recognition.lang = 'en-US';
+
+      recognition.onresult = function (event) {
+        const last = event.results.length - 1;
+        const userVoiceInput = event.results[last][0].transcript;
+
+        // Append user voice input to the textarea
+        document.getElementById("user-input").value += userVoiceInput + ' ';
+      };
+
+      recognition.start();
+    }
+
+    function stopVoiceRecognition() {
+      if (recognition) {
+        recognition.stop();
+      }
+    }
+
+    function sendMessage() {
+      const userInput = document.getElementById("user-input").value.trim();
+      if (userInput === "") return;
+
+      // Display user message
+      displayMessage("user", userInput);
+
+      // Send user message to the server
+      fetch('/send_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'user_message=' + encodeURIComponent(userInput)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Display chatbot's response
+        displayMessage("assistant", data.assistant_message);
+      })
+      .catch(error => console.error('Error:', error));
+
+      // Clear user input
+      document.getElementById("user-input").value = "";
+
+      // Stop voice recognition after sending the message
+      stopVoiceRecognition();
+    }
+
+    function displayMessage(role, content) {
+      const chatContainer = document.getElementById("chat-container");
+      const messageElement = document.createElement("div");
+      messageElement.className = role;
+      messageElement.innerHTML = "<strong>" + role.charAt(0).toUpperCase() + role.slice(1) + ":</strong> " + content;
+      chatContainer.appendChild(messageElement);
+
+      // Scroll to the bottom of the chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  </script>
+</body>
+
+</html>
