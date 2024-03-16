@@ -19,7 +19,14 @@ messages = []
 
 
 #sys_msg
-system_msg = "interviewer" #chatbot will act as an interviewer in the conversation
+system_msg = '''interviewer.act as an interviewer.
+your personality type is friendly and warm .
+you can ask technical questions and IQ questions.
+Only conduct the interview with me. 
+Ask the questions one by one and wait for my answers.
+Do not write explanations'''
+
+#chatbot will act as an interviewer in the conversation
 messages.append({"role": "system", "content": system_msg})  # system --> chat-gpt act as interviewer
 print("Noted: This is a simulated interview for practice purposes only. It does not reflect your actual skills or qualifications.")
 
@@ -32,7 +39,7 @@ Ask the questions one by one and wait for my answers.
 Do not write explanations. 
 you will ask me the interview questions.
 '''
-messages.append({"role": "user", "content": message}) #added another user message to the conversation
+messages.append({"role": "user", "content": message}) 
 
 
 
@@ -71,10 +78,8 @@ def transcribe_input():
 
 
 # set conversation duration to 15 min(900sec)
-max_duration=900
+max_duration=600
 start_time=time.time()
-
-
 
 
 #set maximum number of questions
@@ -119,7 +124,7 @@ while question_count < max_questions:
         speak(follow_up_question)
         message = transcribe_input()#transcribe_input function to listen for and recognize the user's spoken response.  or To detect and identify the spoken response from the user
       
-        messages.append({"role": "user", "content": message})#adds the user's input to the conversation history.
+        messages.append({"role": "user", "content": message})
        
         if message.lower() == "quit()":
            
