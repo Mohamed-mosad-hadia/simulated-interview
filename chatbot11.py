@@ -1,4 +1,4 @@
-import speech_recognition as sr # convert spoken audio into text 
+#import speech_recognition as sr # convert spoken audio into text 
 import pyttsx3 #convert written text to spoken audio using 
 import openai
 import time #library control the timing of responses.
