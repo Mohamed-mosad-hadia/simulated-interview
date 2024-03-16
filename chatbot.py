@@ -6,8 +6,8 @@ import time
 import elevenlabs
 
 # Initialize APIs and variables
-elevenlabs.set_api_key('074f50e26caa45f26ad028a1371ff6c8')
-openai.api_key = ("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")
+elevenlabs.set_api_key('Your_api')
+openai.api_key = ("Your_api")
 messages = []
 
 # Function to speak text
