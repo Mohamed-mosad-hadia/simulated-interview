@@ -133,12 +133,3 @@ while question_count < max_questions:
 
 
 
-
-# Interview button
-#if st.button("Start Interview"):
-   # conduct_interview()
-
-
-# Quit button
-#if st.button("Quit"):
-    #st.stop()
