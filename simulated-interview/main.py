@@ -4,8 +4,8 @@ import time
 import elevenlabs
  
  
-api_key = "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"
-elevenlabs.set_api_key('074f50e26caa45f26ad028a1371ff6c8')
+api_key = "Your_api"
+elevenlabs.set_api_key('Your_api')
 
 
 messages=[]
