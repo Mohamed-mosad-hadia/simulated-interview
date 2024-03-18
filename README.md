@@ -22,7 +22,7 @@ To use this software:
 1. Clone the repository to your local machine.
 2. download the library (pip install speech_recognition,openai, elevenlabs)
 3. Follow the instructions provided by the chatbot to conduct an interview.
-
+4. Please remember to include your (open_api) and (eleven_api). 
 ## Contributing
 
 Contributions are welcome! If you have suggestions, or bug reports, or want to contribute new features, feel free to open an issue or submit a pull request.
