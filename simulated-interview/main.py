@@ -2,6 +2,7 @@ import speech_recognition as sr
 from openai import OpenAI
 import time
 import elevenlabs
+import os 
  
  
 api_key = "Your_api"
