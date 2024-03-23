@@ -5,7 +5,7 @@ import random
 import time
 import os
 
-openai.api_key = ("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")
+openai.api_key = ("your-api")
 
 messages = []
 system_msg = "interviewer"
