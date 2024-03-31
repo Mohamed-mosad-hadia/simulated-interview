@@ -84,7 +84,7 @@ start_time=time.time()
 
 
 #set maximum number of questions
-max_questions=10
+max_questions=5
 question_count=0
 
 while question_count < max_questions:
