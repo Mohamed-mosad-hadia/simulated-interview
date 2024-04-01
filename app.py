@@ -9,7 +9,7 @@ import elevenlabs
 elevenlabs.set_api_key('Your_api_key')
 
 #api_key form website openAi
-openai.api_key = ("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")
+openai.api_key = ("Your_api_key")
 
 
 # empty list to store the conversation  sequence.
